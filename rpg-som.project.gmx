@@ -21,6 +21,9 @@
           <sprite>sprites\spr_fire</sprite>
           <sprite>sprites\spr_selected</sprite>
         </sprites>
+        <sprites name="weapons">
+          <sprite>sprites\spr_sword_swipe</sprite>
+        </sprites>
       </sprites>
     </sprites>
     <sprites name="system">
@@ -50,6 +53,7 @@
         <sprite>sprites\spr_guard_up</sprite>
         <sprite>sprites\spr_guard_left</sprite>
         <sprite>sprites\spr_guard_right</sprite>
+        <sprite>sprites\spr_guard_death</sprite>
       </sprites>
     </sprites>
     <sprites name="misc">
@@ -81,6 +85,7 @@
       <object>objects\obj_npc_base</object>
       <object>objects\obj_follow_me</object>
       <object>objects\obj_warrior</object>
+      <object>objects\obj_dead</object>
     </objects>
     <object>objects\obj_tree</object>
     <object>objects\obj_flower</object>
@@ -119,7 +124,7 @@
     <room>rooms\rm_intro</room>
   </rooms>
   <constants number="2">
-    <constant name="GM_build_date">41895.2461482755</constant>
+    <constant name="GM_build_date">41895.3033248958</constant>
     <constant name="GM_version">'1.0.0.0'</constant>
   </constants>
   <help>

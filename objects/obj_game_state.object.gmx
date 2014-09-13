@@ -33,6 +33,7 @@ globalvar KEY_RIGHT;
 globalvar KEY_RUN;
 globalvar KEY_INV;
 globalvar KEY_INTERACT;
+globalvar KEY_ATTACK;
 
 KEY_UP = ord("W");
 KEY_DOWN = ord("S");
@@ -41,6 +42,7 @@ KEY_RIGHT = ord("D");
 KEY_RUN = vk_shift;
 KEY_INTERACT = vk_space;
 KEY_INV = ord("Q");
+KEY_ATTACK = mb_left;
 
 global.gamespeed = 1.0;
 game_state = "ego_control";
