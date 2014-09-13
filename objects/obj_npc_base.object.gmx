@@ -26,6 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>message = "Undefined";
+attackable = false;
 quest = "";
 has_quest = false;
 quest_condition = "";
@@ -143,9 +144,11 @@ if (my_path != -1) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>hp--;
-image_blend = c_red;
-alarm[11] = 3;
+            <string>if (attackable) {
+    hp--;
+    image_blend = c_red;
+    alarm[11] = 3;
+}
 </string>
           </argument>
         </arguments>

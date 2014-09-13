@@ -79,11 +79,11 @@
   </fonts>
   <objects name="objects">
     <objects name="NPC">
+      <object>objects\obj_npc_base</object>
+      <object>objects\obj_follow_me</object>
       <object>objects\obj_enemy</object>
       <object>objects\obj_guard</object>
       <object>objects\obj_enemy_frozen</object>
-      <object>objects\obj_npc_base</object>
-      <object>objects\obj_follow_me</object>
       <object>objects\obj_warrior</object>
       <object>objects\obj_dead</object>
     </objects>
@@ -92,6 +92,7 @@
     <objects name="system">
       <object>objects\obj_game_state</object>
       <object>objects\obj_monster_collision</object>
+      <object>objects\obj_player_collision</object>
       <object>objects\obj_music_control</object>
       <object>objects\obj_inventory</object>
       <objects name="window">
@@ -121,10 +122,12 @@
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_title_screen</room>
+    <room>rooms\rm_home_01</room>
     <room>rooms\rm_intro</room>
+    <room>rooms\rm_default_grass</room>
   </rooms>
   <constants number="2">
-    <constant name="GM_build_date">41895.3033248958</constant>
+    <constant name="GM_build_date">41895.3471051389</constant>
     <constant name="GM_version">'1.0.0.0'</constant>
   </constants>
   <help>

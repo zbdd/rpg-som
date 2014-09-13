@@ -83,9 +83,10 @@ if(obj_game_state.game_state == "ego_control") {
     if(hsp != 0 || vsp != 0) image_speed = 0.2;
     else image_speed = 0;
     
-    phy_position_x+=hsp;
-    phy_position_y+=vsp;
-    
+    //keep within bounds of screen
+    if (phy_position_x+hsp &gt; 3 &amp;&amp; phy_position_x+hsp &lt; room_width-3) phy_position_x+=hsp;
+    if (phy_position_y+vsp &gt; 3 &amp;&amp; phy_position_y+vsp &lt; room_height-3) phy_position_y+=vsp;
+        
     if (inv) {
         if(!instance_exists(obj_action_wheel)) instance_create(x,y,obj_action_wheel);
         obj_game_state.game_state = "inventory";
@@ -104,6 +105,28 @@ if(obj_game_state.game_state == "ego_control") {
     }
 }
 </string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_player_collision">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string></string>
           </argument>
         </arguments>
       </action>

@@ -28,6 +28,7 @@
             <string>event_inherited();
 
 image_speed = 0.1;
+attackable = true;
 dx = 0;
 dy = 0;
 
