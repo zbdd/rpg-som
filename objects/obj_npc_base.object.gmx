@@ -61,7 +61,7 @@ my_path = -1;
 //hero interactions
 var distance = point_distance(obj_hero.phy_position_x, obj_hero.phy_position_y,x,y);
 if(distance &lt; 24) {
-    if(obj_hero.action == true) {
+    if(keyboard_check_pressed(KEY_INTERACT) &amp;&amp; obj_game_state.game_state == "ego_control") {
         if(has_quest == true) {
             if(obj_game_state.switches[? quest_condition]) {
                 if(obj_game_state.game_state != "suspended_for_message") {

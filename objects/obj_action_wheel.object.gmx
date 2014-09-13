@@ -63,13 +63,17 @@ for (i=0;i&lt;100;i++) {
           <argument>
             <kind>1</kind>
             <string>if(obj_game_state.game_state == "inventory") {
-    key_up = keyboard_check_pressed(vk_up);
-    key_down = -keyboard_check_pressed(vk_down);
-    key_left = -keyboard_check_pressed(vk_left);
-    key_right = keyboard_check_pressed(vk_right)
+    key_up =  keyboard_check_pressed(KEY_UP);
+    key_down = -keyboard_check_pressed(KEY_DOWN);
+    key_left = -keyboard_check_pressed(KEY_LEFT);
+    key_right = keyboard_check_pressed(KEY_RIGHT);
+    key_cancel = keyboard_check_pressed(KEY_INV);
+    key_select = keyboard_check_pressed(KEY_INTERACT);
     
     MAX_RADIUS = 10 + 10 * obj_inventory.TOTAL_ITEMS[obj_inventory.menu_selected];
     angle = 360/obj_inventory.TOTAL_ITEMS[obj_inventory.menu_selected];
+    
+    show_debug_message(obj_hero.spell);
     
     //fancy shit to load the menu
     if (spawn == true) {
@@ -119,16 +123,14 @@ for (i=0;i&lt;100;i++) {
         
     //control menu dial rotating direction
     if (abs(key_left) || key_right) {
-        for (i = 0; i &lt; obj_inventory.TOTAL_ITEMS[obj_inventory.menu_selected]; i++) {
-            obj_hero.spell += key_left + key_right;
-            obj_game_state.game_state = "inventory_rotating";
-        }
-        
+        obj_hero.spell += key_left + key_right;
+        obj_game_state.game_state = "inventory_rotating";
+
         if(obj_hero.spell &lt; 0) obj_hero.spell = obj_inventory.TOTAL_ITEMS[obj_inventory.menu_selected]-1; 
         else if(obj_hero.spell &gt; obj_inventory.TOTAL_ITEMS[obj_inventory.menu_selected]-1) obj_hero.spell = 0;    
     }
  
-    //control moving between menus TODO NOT WORKING YET
+    //control moving between menus
     if (key_up || abs(key_down))  {   
         for (i = 0; i &lt; obj_inventory.TOTAL_ITEMS[obj_inventory.menu_selected]; i++) {
             with (obj_inventory.items[obj_inventory.menu_selected, i]) {
@@ -143,11 +145,11 @@ for (i=0;i&lt;100;i++) {
         spawn = true;
         
         if (obj_inventory.menu_selected &lt; 0) obj_inventory.menu_selected = obj_inventory.MENU_LEVELS-1;
-        else if (obj_inventory.menu_selected &gt; obj_inventory.MENU_LEVELS - 1) obj_inventory.menu_selected = 0;
+        if (obj_inventory.menu_selected &gt; obj_inventory.MENU_LEVELS-1) obj_inventory.menu_selected = 0;
     }
     
     //leave inventory and delete not required objects
-    if (keyboard_check_pressed(vk_space)) {
+    if (key_cancel || key_select) {
         obj_game_state.game_state = "ego_control";  
         
         for (i = 0; i &lt; obj_inventory.TOTAL_ITEMS[obj_inventory.menu_selected]; i++) {

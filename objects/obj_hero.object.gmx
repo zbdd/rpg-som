@@ -54,21 +54,19 @@ spell = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>key_up = -keyboard_check(vk_up);
-key_down = keyboard_check(vk_down);
-key_left = -keyboard_check(vk_left);
-key_right = keyboard_check(vk_right);
-run = keyboard_check(vk_shift);
-z = keyboard_check_pressed(ord("Z"));
-inv = keyboard_check_pressed(ord("I"));
-
-if(z) action = true;  
-else action = false; 
-
-if(run) movespeed = sprint;
-else movespeed = walk;
+            <string>key_up = -keyboard_check(KEY_UP);
+key_down = keyboard_check(KEY_DOWN);
+key_left = -keyboard_check(KEY_LEFT);
+key_right = keyboard_check(KEY_RIGHT);
+run = keyboard_check(KEY_RUN);
+z = keyboard_check_pressed(KEY_INTERACT);
+inv = keyboard_check_pressed(KEY_INV);
 
 if(obj_game_state.game_state == "ego_control") {   
+    
+    if(run) movespeed = sprint;
+    else movespeed = walk;
+
     depth = phy_position_y * -1;
     
     hmove = key_left + key_right;

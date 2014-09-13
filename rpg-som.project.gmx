@@ -99,6 +99,9 @@
     <objects name="Hero">
       <object>objects\obj_hero</object>
       <object>objects\obj_action_wheel</object>
+      <objects name="Attack">
+        <object>objects\obj_sword_attack</object>
+      </objects>
     </objects>
     <objects name="inventory">
       <objects name="spells">
@@ -116,7 +119,7 @@
     <room>rooms\rm_intro</room>
   </rooms>
   <constants number="2">
-    <constant name="GM_build_date">41881.4761880324</constant>
+    <constant name="GM_build_date">41895.2461482755</constant>
     <constant name="GM_version">'1.0.0.0'</constant>
   </constants>
   <help>

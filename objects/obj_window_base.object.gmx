@@ -51,11 +51,15 @@ start = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(start == true) {
+            <string>if (start == true) {
     image_yscale = lerp(image_yscale, target_yscale,0.4);
     
     progress = image_yscale / target_yscale;
     y = lerp(start_y, target_y, progress);
+}
+if (obj_game_state.game_state == "suspended_for_message" &amp;&amp; keyboard_check_pressed(KEY_INTERACT)) {
+    obj_game_state.game_state = "ego_control";
+    instance_destroy();
 }
 </string>
           </argument>
@@ -126,32 +130,6 @@ draw_sprite(spr_window_TR,0,x+sprite_width+70,y);
 draw_sprite(spr_window_BL,0,x,y + sprite_height);
 draw_sprite(spr_window_BR,0,x + sprite_width+70,y + sprite_height);
 
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="32">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if(obj_game_state.game_state == "suspended_for_message") {
-    obj_game_state.game_state = "ego_control";
-    instance_destroy();
-}
 </string>
           </argument>
         </arguments>
