@@ -36,6 +36,7 @@ hp = 5;
 image_speed = 0;
 movespeed = 3;
 my_path = -1;
+npc_name = "NPC Friend";
 </string>
           </argument>
         </arguments>
@@ -90,17 +91,17 @@ if(distance &lt; 24) {
         if(has_quest == true) {
             if(obj_game_state.switches[? quest_condition]) {
                 if(obj_game_state.game_state != "suspended_for_message") {
-                    create_text_window(quest_success);
+                    create_text_window(quest_success, npc_name);
                 }
             } else {
                 obj_game_state.switches[? quest] = true;
                 if(obj_game_state.game_state != "suspended_for_message") {
-                    create_text_window(message);
+                    create_text_window(message, npc_name);
                 }
             }
         } else {
             if(obj_game_state.game_state != "suspended_for_message") {
-                    create_text_window(message);
+                    create_text_window(message, npc_name);
                     //show_message(message);
            }
         }

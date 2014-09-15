@@ -25,37 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Initialise
-globalvar KEY_UP;
-globalvar KEY_DOWN;
-globalvar KEY_LEFT;
-globalvar KEY_RIGHT;
-globalvar KEY_RUN;
-globalvar KEY_INV;
-globalvar KEY_INTERACT;
-globalvar KEY_ATTACK;
-globalvar HERO_NAME;
-
-HERO_NAME = "Erasmus";
-KEY_UP = ord("W");
-KEY_DOWN = ord("S");
-KEY_LEFT = ord("A");
-KEY_RIGHT = ord("D");
-KEY_RUN = vk_shift;
-KEY_INTERACT = vk_space;
-KEY_INV = ord("Q");
-KEY_ATTACK = mb_left;
-
-global.gamespeed = 1.0;
-game_state = "ego_control";
-
-room_goto_next();
-
-switches = ds_map_create(); //
-switches[? "quest_teaparty_gotten"] = false;
-switches[? "quest_teaparty_started"] = false;
-switches[? "quest_farm_pests_started"] = true;
-
+            <string>quests = ds_map_create();
+quests[? "main_to_town"] = true;
+quests[? "opt_gather_weeds"] = false;
 </string>
           </argument>
         </arguments>

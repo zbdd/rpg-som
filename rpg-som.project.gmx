@@ -39,6 +39,7 @@
         <sprite>sprites\spr_window_R</sprite>
         <sprite>sprites\spr_window_base</sprite>
       </sprites>
+      <sprite>sprites\spr_chat_trigger</sprite>
       <sprite>sprites\spr_monster_collision</sprite>
     </sprites>
     <sprites name="NPC">
@@ -73,6 +74,7 @@
   <scripts name="scripts">
     <script>scripts\create_text_window.gml</script>
     <script>scripts\add_inventory.gml</script>
+    <script>scripts\explode_string.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fa_default</font>
@@ -82,6 +84,7 @@
       <object>objects\obj_npc_base</object>
       <object>objects\obj_follow_me</object>
       <object>objects\obj_enemy</object>
+      <object>objects\obj_brother</object>
       <object>objects\obj_guard</object>
       <object>objects\obj_enemy_frozen</object>
       <object>objects\obj_warrior</object>
@@ -89,14 +92,19 @@
     </objects>
     <object>objects\obj_tree</object>
     <object>objects\obj_flower</object>
-    <objects name="system">
+    <objects name="System">
+      <object>objects\obj_quest_control</object>
       <object>objects\obj_game_state</object>
+      <object>objects\obj_music_control</object>
+      <object>objects\obj_chat_control</object>
+      <object>objects\obj_inventory</object>
       <object>objects\obj_monster_collision</object>
       <object>objects\obj_player_collision</object>
-      <object>objects\obj_music_control</object>
-      <object>objects\obj_inventory</object>
-      <objects name="window">
+      <objects name="Window">
         <object>objects\obj_window_base</object>
+      </objects>
+      <objects name="Chats">
+        <object>objects\obj_chat_trigger_start</object>
       </objects>
     </objects>
     <objects name="quest items">
@@ -127,7 +135,7 @@
     <room>rooms\rm_default_grass</room>
   </rooms>
   <constants number="2">
-    <constant name="GM_build_date">41895.3471051389</constant>
+    <constant name="GM_build_date">41896.2176840162</constant>
     <constant name="GM_version">'1.0.0.0'</constant>
   </constants>
   <help>

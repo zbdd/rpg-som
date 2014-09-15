@@ -29,6 +29,11 @@
 message = "Undefined Message";
 obj_game_state.game_state = "suspended_for_message";
 start = false;
+message_array = '';
+new_messages = 0;
+tokenise_string = true;
+speaker = "Default";
+numbers = 0;
 </string>
           </argument>
         </arguments>
@@ -57,7 +62,46 @@ start = false;
     progress = image_yscale / target_yscale;
     y = lerp(start_y, target_y, progress);
 }
-if (obj_game_state.game_state == "suspended_for_message" &amp;&amp; keyboard_check_pressed(KEY_INTERACT)) {
+
+if (tokenise_string) {
+    if (string_length(message) &gt; 100) {
+        max_length = 100;
+
+        while (string_length(message) &gt; max_length) {
+            i=max_length-10;
+            space = "a";
+            while(space != " ") {
+                space = string_char_at(message, i); 
+                i++;   
+            }
+            max_length = i;
+            message = string_insert("||", message, max_length);
+            max_length += 100;
+        }
+        message = string_insert("||", message, string_length(message)+1);
+        
+        numbers = string_count("||", message);
+        
+        for( i = 0; i &lt; numbers; i += 1 )
+        {
+            pos = string_pos("||", message);
+            message_array[i] = speaker + ": " + string_copy(message, 1, pos-1);
+            message = string_delete(message, 1, pos+1);
+        }
+        message = message_array[0];
+        index = 0;
+    } else {
+        index = 1;
+    }
+    
+    tokenise_string = false;
+}
+
+if (obj_game_state.game_state == "suspended_for_message" &amp;&amp; keyboard_check_pressed(KEY_INTERACT)
+    &amp;&amp; index &lt; numbers-1) {
+    index++;
+    message = message_array[index];      
+} else if (obj_game_state.game_state == "suspended_for_message" &amp;&amp; keyboard_check_pressed(KEY_INTERACT)) {
     obj_game_state.game_state = "ego_control";
     instance_destroy();
 }
