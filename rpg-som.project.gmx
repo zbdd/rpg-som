@@ -3,7 +3,9 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <NewExtensions/>
+  <NewExtensions>
+    <extension index="0">extensions\xygthop3 shader examples</extension>
+  </NewExtensions>
   <sounds name="sound">
     <sound>sound\snd_bg_travel_01</sound>
   </sounds>
@@ -76,6 +78,7 @@
     <script>scripts\add_inventory.gml</script>
     <script>scripts\explode_string.gml</script>
   </scripts>
+  <shaders name="shaders"/>
   <fonts name="fonts">
     <font>fonts\fa_default</font>
   </fonts>
@@ -135,7 +138,7 @@
     <room>rooms\rm_default_grass</room>
   </rooms>
   <constants number="2">
-    <constant name="GM_build_date">41896.2176840162</constant>
+    <constant name="GM_build_date">41897.5838310301</constant>
     <constant name="GM_version">'1.0.0.0'</constant>
   </constants>
   <help>

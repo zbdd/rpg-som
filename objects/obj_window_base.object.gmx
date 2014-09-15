@@ -67,7 +67,7 @@ if (tokenise_string) {
     if (string_length(message) &gt; 100) {
         max_length = 100;
 
-        while (string_length(message) &gt; max_length) {
+        while ((string_length(speaker) + string_length(message)) &gt; max_length) {
             i=max_length-10;
             space = "a";
             while(space != " ") {
@@ -76,7 +76,7 @@ if (tokenise_string) {
             }
             max_length = i;
             message = string_insert("||", message, max_length);
-            max_length += 100;
+            max_length += 100 - string_length(speaker);
         }
         message = string_insert("||", message, string_length(message)+1);
         
@@ -92,7 +92,9 @@ if (tokenise_string) {
         index = 0;
     } else {
         index = 1;
+        message = speaker + ": " + message;
     }
+    
     
     tokenise_string = false;
 }
@@ -173,7 +175,6 @@ draw_sprite(spr_window_TL,0,x,y);
 draw_sprite(spr_window_TR,0,x+sprite_width+70,y);
 draw_sprite(spr_window_BL,0,x,y + sprite_height);
 draw_sprite(spr_window_BR,0,x + sprite_width+70,y + sprite_height);
-
 </string>
           </argument>
         </arguments>

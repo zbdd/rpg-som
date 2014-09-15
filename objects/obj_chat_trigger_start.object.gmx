@@ -27,6 +27,8 @@
             <kind>1</kind>
             <string>//chat trigger
 message = "Default chat trigger";
+first_action = true;
+
 </string>
           </argument>
         </arguments>
@@ -49,14 +51,19 @@ message = "Default chat trigger";
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>message = "Brother " + HERO_NAME + "! I cannot believe it's your coming of age today. Father has requested your presence in town. Sorry I can't join you until later, but these damn pests in the garden are slowing me down. If you have time could you slay a few of them for me?";
-create_text_window(message, "Brother");
-if(!instance_exists(obj_window_base)) {
+            <string>if (first_action == true) {
+    message = "Brother " + HERO_NAME + "! I cannot believe it's your coming of age today. Father has requested your presence in town. Sorry I can't join you until later, but these damn pests in the garden are slowing me down. If you have time could you slay a few of them for me?";
+    create_text_window(message, "Brother");  
+    first_action = false;
+}
+if (first_action != true &amp;&amp; !instance_exists(obj_window_base)) {
     new_quest = "See your father in town."
     create_text_window(new_quest, "Quest Started");
-    obj_window_base.image_blend = c_yellow;
+    
+  
+    instance_destroy();
 }
-instance_destroy();
+
 </string>
           </argument>
         </arguments>
