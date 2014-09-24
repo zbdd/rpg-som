@@ -3,11 +3,17 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <NewExtensions>
-    <extension index="0">extensions\xygthop3 shader examples</extension>
-  </NewExtensions>
+  <NewExtensions/>
   <sounds name="sound">
-    <sound>sound\snd_bg_travel_01</sound>
+    <sounds name="Background">
+      <sound>sound\snd_bg_travel_01</sound>
+    </sounds>
+    <sounds name="Weapons">
+      <sounds name="Sword">
+        <sound>sound\snd_sword_swipe</sound>
+        <sound>sound\snd_sword_contact</sound>
+      </sounds>
+    </sounds>
   </sounds>
   <sprites name="sprites">
     <sprites name="Hero">
@@ -150,7 +156,7 @@
     <room>rooms\rm_default_grass</room>
   </rooms>
   <constants number="2">
-    <constant name="GM_build_date">41906.5106488773</constant>
+    <constant name="GM_build_date">41906.5229918866</constant>
     <constant name="GM_version">'1.0.0.0'</constant>
   </constants>
   <help>

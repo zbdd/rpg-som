@@ -147,6 +147,7 @@ if (my_path != -1) {
           <argument>
             <kind>1</kind>
             <string>if (attackable) {
+    audio_play_sound(snd_sword_contact,1, false);
     hp--;
     image_blend = c_red;
     alarm[11] = 3;
