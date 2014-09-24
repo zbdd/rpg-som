@@ -10,7 +10,7 @@
     <sound>sound\snd_bg_travel_01</sound>
   </sounds>
   <sprites name="sprites">
-    <sprites name="hero">
+    <sprites name="Hero">
       <sprite>sprites\spr_hero_up</sprite>
       <sprite>sprites\spr_hero_down</sprite>
       <sprite>sprites\spr_hero_right</sprite>
@@ -28,7 +28,7 @@
         </sprites>
       </sprites>
     </sprites>
-    <sprites name="system">
+    <sprites name="System">
       <sprites name="window">
         <sprite>sprites\spr_window_skin</sprite>
         <sprite>sprites\spr_window_TL</sprite>
@@ -43,26 +43,34 @@
       </sprites>
       <sprite>sprites\spr_chat_trigger</sprite>
       <sprite>sprites\spr_monster_collision</sprite>
+      <sprite>sprites\spr_hero_collision</sprite>
     </sprites>
     <sprites name="NPC">
-      <sprites name="enemy">
+      <sprites name="Enemy">
         <sprite>sprites\spr_enemy_left</sprite>
         <sprite>sprites\spr_enemy_up</sprite>
         <sprite>sprites\spr_enemy_down</sprite>
         <sprite>sprites\spr_enemy_right</sprite>
       </sprites>
-      <sprites name="guard">
+      <sprites name="Guard">
         <sprite>sprites\spr_guard_down</sprite>
         <sprite>sprites\spr_guard_up</sprite>
         <sprite>sprites\spr_guard_left</sprite>
         <sprite>sprites\spr_guard_right</sprite>
         <sprite>sprites\spr_guard_death</sprite>
       </sprites>
+      <sprites name="Weed">
+        <sprite>sprites\spr_weed_down</sprite>
+        <sprite>sprites\spr_weed_up</sprite>
+        <sprite>sprites\spr_weed_left</sprite>
+        <sprite>sprites\spr_weed_right</sprite>
+        <sprite>sprites\spr_weed_death</sprite>
+      </sprites>
     </sprites>
-    <sprites name="misc">
+    <sprites name="MISC">
       <sprite>sprites\spr_teapot</sprite>
     </sprites>
-    <sprites name="nature">
+    <sprites name="Nature">
       <sprite>sprites\spr_tree</sprite>
       <sprite>sprites\spr_flower</sprite>
     </sprites>
@@ -78,7 +86,6 @@
     <script>scripts\add_inventory.gml</script>
     <script>scripts\explode_string.gml</script>
   </scripts>
-  <shaders name="shaders"/>
   <fonts name="fonts">
     <font>fonts\fa_default</font>
   </fonts>
@@ -86,12 +93,15 @@
     <objects name="NPC">
       <object>objects\obj_npc_base</object>
       <object>objects\obj_follow_me</object>
+      <object>objects\obj_dead</object>
       <object>objects\obj_enemy</object>
       <object>objects\obj_brother</object>
       <object>objects\obj_guard</object>
       <object>objects\obj_enemy_frozen</object>
       <object>objects\obj_warrior</object>
-      <object>objects\obj_dead</object>
+      <objects name="Creeps">
+        <object>objects\obj_creep_base</object>
+      </objects>
     </objects>
     <object>objects\obj_tree</object>
     <object>objects\obj_flower</object>
@@ -100,7 +110,7 @@
       <object>objects\obj_game_state</object>
       <object>objects\obj_music_control</object>
       <object>objects\obj_chat_control</object>
-      <object>objects\obj_inventory</object>
+      <object>objects\obj_inventory_control</object>
       <object>objects\obj_monster_collision</object>
       <object>objects\obj_player_collision</object>
       <objects name="Window">
@@ -110,7 +120,7 @@
         <object>objects\obj_chat_trigger_start</object>
       </objects>
     </objects>
-    <objects name="quest items">
+    <objects name="Quest Items">
       <object>objects\obj_teapot</object>
     </objects>
     <objects name="Hero">
@@ -120,15 +130,17 @@
         <object>objects\obj_sword_attack</object>
       </objects>
     </objects>
-    <objects name="inventory">
+    <objects name="Inventory">
       <objects name="spells">
+        <object>objects\obj_spell_parent</object>
         <object>objects\obj_water</object>
         <object>objects\obj_fire</object>
         <object>objects\obj_light</object>
         <object>objects\obj_earth</object>
         <object>objects\obj_selected_spell</object>
-        <object>objects\obj_spell_parent</object>
       </objects>
+      <object>objects\obj_weed</object>
+      <object>objects\obj_collectable_base</object>
     </objects>
   </objects>
   <rooms name="rooms">
@@ -138,7 +150,7 @@
     <room>rooms\rm_default_grass</room>
   </rooms>
   <constants number="2">
-    <constant name="GM_build_date">41897.5838310301</constant>
+    <constant name="GM_build_date">41906.5106488773</constant>
     <constant name="GM_version">'1.0.0.0'</constant>
   </constants>
   <help>

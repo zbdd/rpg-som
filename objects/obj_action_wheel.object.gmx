@@ -25,8 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>MAX_RADIUS = 10*obj_inventory.TOTAL_ITEMS[obj_inventory.menu_selected];
-angle = 360/obj_inventory.TOTAL_ITEMS[obj_inventory.menu_selected];
+            <string>MAX_RADIUS = 10*obj_inventory_control.TOTAL_ITEMS[obj_inventory_control.menu_selected];
+angle = 360/obj_inventory_control.TOTAL_ITEMS[obj_inventory_control.menu_selected];
 initial_angle = angle;
 radius = 0;
 rotate = 0;
@@ -70,8 +70,8 @@ for (i=0;i&lt;100;i++) {
     key_cancel = keyboard_check_pressed(KEY_INV);
     key_select = keyboard_check_pressed(KEY_INTERACT);
     
-    MAX_RADIUS = 10 + 10 * obj_inventory.TOTAL_ITEMS[obj_inventory.menu_selected];
-    angle = 360/obj_inventory.TOTAL_ITEMS[obj_inventory.menu_selected];
+    MAX_RADIUS = 10 + 10 * obj_inventory_control.TOTAL_ITEMS[obj_inventory_control.menu_selected];
+    angle = 360/obj_inventory_control.TOTAL_ITEMS[obj_inventory_control.menu_selected];
     
     show_debug_message(obj_hero.spell);
     
@@ -84,16 +84,16 @@ for (i=0;i&lt;100;i++) {
         
         rotate = round ((rotate + ROTATE_SPEED) % 360);
             
-        for (i = 0; i &lt; obj_inventory.TOTAL_ITEMS[obj_inventory.menu_selected]; i++) {
+        for (i = 0; i &lt; obj_inventory_control.TOTAL_ITEMS[obj_inventory_control.menu_selected]; i++) {
             original = angle * i;
             
             spr_x = round(obj_hero.x + radius * cos((original - rotate) * pi / 180));
             spr_y = round(obj_hero.y + radius * sin((original - rotate) * pi / 180));
                    
-            if (!instance_exists(obj_inventory.items[obj_inventory.menu_selected, i])) instance_create(spr_x, spr_y, obj_inventory.items[obj_inventory.menu_selected, i]); 
+            if (!instance_exists(obj_inventory_control.items[obj_inventory_control.menu_selected, i])) instance_create(spr_x, spr_y, obj_inventory_control.items[obj_inventory_control.menu_selected, i]); 
             
-            obj_inventory.items[obj_inventory.menu_selected, i].x = spr_x;
-            obj_inventory.items[obj_inventory.menu_selected, i].y = spr_y;
+            obj_inventory_control.items[obj_inventory_control.menu_selected, i].x = spr_x;
+            obj_inventory_control.items[obj_inventory_control.menu_selected, i].y = spr_y;
         }  
         
         rotate_to = -1;
@@ -103,16 +103,16 @@ for (i=0;i&lt;100;i++) {
             spawn = false;
         } 
     } else {
-        for(i = 0; i &lt; obj_inventory.TOTAL_ITEMS[obj_inventory.menu_selected]; i++) {
+        for(i = 0; i &lt; obj_inventory_control.TOTAL_ITEMS[obj_inventory_control.menu_selected]; i++) {
             original = angle * i;
                                     
             spr_x = obj_hero.x + radius * cos((original - rotate) * pi / 180);
             spr_y = obj_hero.y + radius * sin((original - rotate) * pi / 180);
         
-            with(obj_inventory.items[obj_inventory.menu_selected, i]) {
+            with(obj_inventory_control.items[obj_inventory_control.menu_selected, i]) {
                 instance_destroy();
             } 
-            instance_create(spr_x, spr_y, obj_inventory.items[obj_inventory.menu_selected, i]);
+            instance_create(spr_x, spr_y, obj_inventory_control.items[obj_inventory_control.menu_selected, i]);
         }   
         
         with(obj_selected_spell) {
@@ -126,34 +126,34 @@ for (i=0;i&lt;100;i++) {
         obj_hero.spell += key_left + key_right;
         obj_game_state.game_state = "inventory_rotating";
 
-        if(obj_hero.spell &lt; 0) obj_hero.spell = obj_inventory.TOTAL_ITEMS[obj_inventory.menu_selected]-1; 
-        else if(obj_hero.spell &gt; obj_inventory.TOTAL_ITEMS[obj_inventory.menu_selected]-1) obj_hero.spell = 0;    
+        if(obj_hero.spell &lt; 0) obj_hero.spell = obj_inventory_control.TOTAL_ITEMS[obj_inventory_control.menu_selected]-1; 
+        else if(obj_hero.spell &gt; obj_inventory_control.TOTAL_ITEMS[obj_inventory_control.menu_selected]-1) obj_hero.spell = 0;    
     }
  
     //control moving between menus
     if (key_up || abs(key_down))  {   
-        for (i = 0; i &lt; obj_inventory.TOTAL_ITEMS[obj_inventory.menu_selected]; i++) {
-            with (obj_inventory.items[obj_inventory.menu_selected, i]) {
+        for (i = 0; i &lt; obj_inventory_control.TOTAL_ITEMS[obj_inventory_control.menu_selected]; i++) {
+            with (obj_inventory_control.items[obj_inventory_control.menu_selected, i]) {
                     instance_destroy();
                 } 
             with (obj_selected_spell) {
                 instance_destroy();
             }
         }
-        old_menu = obj_inventory.menu_selected;
-        obj_inventory.menu_selected += key_up + key_down;
+        old_menu = obj_inventory_control.menu_selected;
+        obj_inventory_control.menu_selected += key_up + key_down;
         spawn = true;
         
-        if (obj_inventory.menu_selected &lt; 0) obj_inventory.menu_selected = obj_inventory.MENU_LEVELS-1;
-        if (obj_inventory.menu_selected &gt; obj_inventory.MENU_LEVELS-1) obj_inventory.menu_selected = 0;
+        if (obj_inventory_control.menu_selected &lt; 0) obj_inventory_control.menu_selected = obj_inventory_control.MENU_LEVELS-1;
+        if (obj_inventory_control.menu_selected &gt; obj_inventory_control.MENU_LEVELS-1) obj_inventory_control.menu_selected = 0;
     }
     
     //leave inventory and delete not required objects
     if (key_cancel || key_select) {
         obj_game_state.game_state = "ego_control";  
         
-        for (i = 0; i &lt; obj_inventory.TOTAL_ITEMS[obj_inventory.menu_selected]; i++) {
-            with (obj_inventory.items[obj_inventory.menu_selected, i]) {
+        for (i = 0; i &lt; obj_inventory_control.TOTAL_ITEMS[obj_inventory_control.menu_selected]; i++) {
+            with (obj_inventory_control.items[obj_inventory_control.menu_selected, i]) {
                 instance_destroy();
             } 
         }
@@ -168,14 +168,14 @@ if (obj_game_state.game_state == "inventory_rotating") {
 
     rotate = round((rotate + ((key_left + key_right) * ROTATE_SPEED)) % 360);
 
-    for (i = 0; i &lt; obj_inventory.TOTAL_ITEMS[obj_inventory.menu_selected]; i++) {
+    for (i = 0; i &lt; obj_inventory_control.TOTAL_ITEMS[obj_inventory_control.menu_selected]; i++) {
         original = angle * i;
                             
         spr_x = obj_hero.x + radius * cos((original - rotate) * pi / 180);
         spr_y = obj_hero.y + radius * sin((original - rotate) * pi / 180);
                     
-        obj_inventory.items[obj_inventory.menu_selected, i].x = spr_x;
-        obj_inventory.items[obj_inventory.menu_selected, i].y = spr_y;
+        obj_inventory_control.items[obj_inventory_control.menu_selected, i].x = spr_x;
+        obj_inventory_control.items[obj_inventory_control.menu_selected, i].y = spr_y;
     }
         
     if ((abs(rotate) % angle) == 0) {  
