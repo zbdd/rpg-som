@@ -44,7 +44,7 @@ menu_selected = 0;
 
 TOTAL_ITEMS[0] = 3;
 TOTAL_ITEMS[1] = 0; 
-MENU_LEVELS = 1;
+MENU_LEVELS = 2;
 </string>
           </argument>
         </arguments>

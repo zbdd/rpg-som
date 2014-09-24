@@ -72,6 +72,7 @@
         <sprite>sprites\spr_weed_right</sprite>
         <sprite>sprites\spr_weed_death</sprite>
       </sprites>
+      <sprite>sprites\spr_empty</sprite>
     </sprites>
     <sprites name="MISC">
       <sprite>sprites\spr_teapot</sprite>
@@ -156,7 +157,7 @@
     <room>rooms\rm_default_grass</room>
   </rooms>
   <constants number="2">
-    <constant name="GM_build_date">41906.5229918866</constant>
+    <constant name="GM_build_date">41906.5524182639</constant>
     <constant name="GM_version">'1.0.0.0'</constant>
   </constants>
   <help>

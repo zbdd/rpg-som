@@ -96,9 +96,10 @@ if (phy_position_y+dy &gt; 3 &amp;&amp; phy_position_y+dy &lt; room_height-3) ph
 
 //death
 if (hp &lt;= 0) {
-    instance_create(x,y, obj_dead);
-    instance_create(x, y, obj_weed);
-    obj_dead.sprite_index = spr_weed_death;
+    new_weed = instance_create(x,y, obj_dead);
+    //new_weed = instance_create(x, y, obj_weed);
+    new_weed.sprite_index = spr_weed_death;
+    new_weed.item = obj_weed;
     instance_destroy();
 } 
 </string>
