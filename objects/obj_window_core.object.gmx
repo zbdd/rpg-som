@@ -34,6 +34,8 @@ new_messages = 0;
 tokenise_string = true;
 speaker = "Default";
 numbers = 0;
+length = 60;
+height = 16;
 </string>
           </argument>
         </arguments>
@@ -159,22 +161,23 @@ start = true;
           <argument>
             <kind>1</kind>
             <string>draw_set_font(fa_default);
-draw_sprite_stretched_ext(spr_window_base,0,x + 4, y + 4, sprite_width + 80, sprite_height + 10, c_blue,0.6);
+draw_sprite_stretched_ext(spr_window_base,0,x + 4, y + 4, sprite_width + length, sprite_height + height, c_blue,0.6);
 
-draw_text_ext(x+16,y+10,message,16,sprite_width+56);
+draw_text_ext(x + 12,y + 10,message,16,sprite_width + length - 16);
 draw_set_colour(c_white);
 
 ///Draw Window
-draw_sprite_stretched(spr_window_T, 0,x+4,y,sprite_width + 66,16);
-draw_sprite_stretched(spr_window_B, 0,x+4,y+sprite_height,sprite_width + 66,16);
+draw_sprite_stretched(spr_window_T, 0,x+4,y,sprite_width + length,16);
+draw_sprite_stretched(spr_window_B, 0,x+4,y+sprite_height + height - 10,sprite_width + length,16);
     
-draw_sprite_stretched(spr_window_L, 0,x,y+4,16,sprite_height-4);
-draw_sprite_stretched(spr_window_R, 0,x+sprite_width+70,y+4,16,sprite_height-4);
+draw_sprite_stretched(spr_window_L, 0,x,y + 4,16,sprite_height + height);
+draw_sprite_stretched(spr_window_R, 0,x + sprite_width + length - 10,y+4,16,sprite_height + height);
 
 draw_sprite(spr_window_TL,0,x,y);
-draw_sprite(spr_window_TR,0,x+sprite_width+70,y);
-draw_sprite(spr_window_BL,0,x,y + sprite_height);
-draw_sprite(spr_window_BR,0,x + sprite_width+70,y + sprite_height);
+draw_sprite(spr_window_TR,0,x + sprite_width + length - 10,y);
+draw_sprite(spr_window_BL,0,x,y + sprite_height + height - 10);
+draw_sprite(spr_window_BR,0,x + sprite_width + length - 10,y + sprite_height + height - 10);
+
 </string>
           </argument>
         </arguments>

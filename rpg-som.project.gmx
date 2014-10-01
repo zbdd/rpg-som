@@ -85,11 +85,10 @@
   <backgrounds name="background">
     <background>background\bg_tileset_main</background>
   </backgrounds>
-  <paths name="paths">
-    <path>paths\path_guard</path>
-  </paths>
+  <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\create_text_window.gml</script>
+    <script>scripts\window.gml</script>
     <script>scripts\add_inventory.gml</script>
     <script>scripts\explode_string.gml</script>
   </scripts>
@@ -122,6 +121,7 @@
       <object>objects\obj_player_collision</object>
       <objects name="Window">
         <object>objects\obj_window_base</object>
+        <object>objects\obj_window_core</object>
       </objects>
       <objects name="Chats">
         <object>objects\obj_chat_trigger_start</object>
@@ -157,7 +157,7 @@
     <room>rooms\rm_default_grass</room>
   </rooms>
   <constants number="2">
-    <constant name="GM_build_date">41906.5524182639</constant>
+    <constant name="GM_build_date">41913.4514493287</constant>
     <constant name="GM_version">'1.0.0.0'</constant>
   </constants>
   <help>
