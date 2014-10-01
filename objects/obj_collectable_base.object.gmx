@@ -29,6 +29,8 @@
 direction = (random(360));
 speed = 2;
 alarm[0] = 10;
+name = "default";
+amount = 1;
 </string>
           </argument>
         </arguments>

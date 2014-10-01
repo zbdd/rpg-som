@@ -78,7 +78,6 @@ item = false;
           <argument>
             <kind>1</kind>
             <string>if (item) {
-    show_debug_message("collecting");
     add_inventory(item, 1, 1); 
     item = false;
 }

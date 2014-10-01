@@ -1,12 +1,24 @@
 object = argument0;
 menu = argument1;
-amount = argument2;
+amountToAdd = argument2;
+didadd = false;
 
-show_debug_message(object);
-show_debug_message(menu);
+//add to item total rather than create a new one.
+for (i = 0; i < obj_inventory_control.TOTAL_ITEMS[menu]; i++) {
+    if (obj_inventory_control.items[menu, i] == object) {
+        with (obj_inventory_control.items[menu, i]) {
+            amount += amountToAdd;
+        }
+        didadd = true;
+    } 
+}
+if (!didadd) {
+   obj_inventory_control.items[menu, obj_inventory_control.TOTAL_ITEMS[menu]] = object;
+   obj_inventory_control.TOTAL_ITEMS[menu]++; 
+   obj_inventory_control.items[menu, i].amount = amountToAdd;
+}
 
-obj_inventory_control.items[menu, obj_inventory_control.TOTAL_ITEMS[menu]] = object;
-obj_inventory_control.TOTAL_ITEMS[menu]++;
+
 
 /*var temp;
 temp = instance_create(x,y,object);

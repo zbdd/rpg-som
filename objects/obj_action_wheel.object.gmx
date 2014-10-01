@@ -39,13 +39,16 @@ for (i=0;i&lt;100;i++) {
         ROTATE_SPEED++;
 }
 
+selected_spell = instance_create(obj_hero.x+radius,obj_hero.y,obj_selected_spell);
+selected_spell.visible = false;
+
 
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="0">
+    <event eventtype="3" enumb="1">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -73,8 +76,6 @@ for (i=0;i&lt;100;i++) {
     MAX_RADIUS = 10 + 10 * obj_inventory_control.TOTAL_ITEMS[obj_inventory_control.menu_selected];
     angle = 360/obj_inventory_control.TOTAL_ITEMS[obj_inventory_control.menu_selected];
     
-    show_debug_message(obj_hero.spell);
-    
     //fancy shit to load the menu
     if (spawn == true) {
         if (radius &lt;= 0 &amp;&amp; obj_hero.spell != 0) rotate = round ((angle * obj_hero.spell) % 360);
@@ -91,9 +92,11 @@ for (i=0;i&lt;100;i++) {
             spr_y = round(obj_hero.y + radius * sin((original - rotate) * pi / 180));
                    
             if (!instance_exists(obj_inventory_control.items[obj_inventory_control.menu_selected, i])) instance_create(spr_x, spr_y, obj_inventory_control.items[obj_inventory_control.menu_selected, i]); 
-            
-            obj_inventory_control.items[obj_inventory_control.menu_selected, i].x = spr_x;
-            obj_inventory_control.items[obj_inventory_control.menu_selected, i].y = spr_y;
+            else {
+                obj_inventory_control.items[obj_inventory_control.menu_selected, i].visible = true;
+                obj_inventory_control.items[obj_inventory_control.menu_selected, i].x = spr_x;
+                obj_inventory_control.items[obj_inventory_control.menu_selected, i].y = spr_y;
+            }
         }  
         
         rotate_to = -1;
@@ -110,15 +113,17 @@ for (i=0;i&lt;100;i++) {
             spr_y = obj_hero.y + radius * sin((original - rotate) * pi / 180);
         
             with(obj_inventory_control.items[obj_inventory_control.menu_selected, i]) {
-                instance_destroy();
+                visible = true;
             } 
-            instance_create(spr_x, spr_y, obj_inventory_control.items[obj_inventory_control.menu_selected, i]);
-        }   
+            //instance_create(spr_x, spr_y, obj_inventory_control.items[obj_inventory_control.menu_selected, i]);
+            obj_inventory_control.items[obj_inventory_control.menu_selected, i].x = spr_x;
+            obj_inventory_control.items[obj_inventory_control.menu_selected, i].y = spr_y;
+        }  
+        //show_debug_message(obj_inventory_control.items[obj_inventory_control.menu_selected, obj_hero.spell].amount); 
+        selected_spell.x = obj_hero.x + radius;
+        selected_spell.y = obj_hero.y;
+        selected_spell.visible = true;
         
-        with(obj_selected_spell) {
-            instance_destroy();       
-        }
-        instance_create(obj_hero.x+radius,obj_hero.y,obj_selected_spell);
     }
         
     //control menu dial rotating direction
@@ -134,11 +139,8 @@ for (i=0;i&lt;100;i++) {
     if (key_up || abs(key_down))  {   
         for (i = 0; i &lt; obj_inventory_control.TOTAL_ITEMS[obj_inventory_control.menu_selected]; i++) {
             with (obj_inventory_control.items[obj_inventory_control.menu_selected, i]) {
-                    instance_destroy();
-                } 
-            with (obj_selected_spell) {
-                instance_destroy();
-            }
+                    visible = false;
+            } 
         }
         old_menu = obj_inventory_control.menu_selected;
         obj_inventory_control.menu_selected += key_up + key_down;
@@ -148,21 +150,17 @@ for (i=0;i&lt;100;i++) {
         if (obj_inventory_control.menu_selected &gt; obj_inventory_control.MENU_LEVELS-1) obj_inventory_control.menu_selected = 0;
         
         if (obj_inventory_control.TOTAL_ITEMS[obj_inventory_control.menu_selected] &lt;= 0) obj_inventory_control.menu_selected = old_menu;
+        else obj_hero.spell = 0;
     }
     
     //leave inventory and delete not required objects
-    if (key_cancel || key_select) {
+    if (key_cancel || key_select ) {
         obj_game_state.game_state = "ego_control";  
         
         for (i = 0; i &lt; obj_inventory_control.TOTAL_ITEMS[obj_inventory_control.menu_selected]; i++) {
-            with (obj_inventory_control.items[obj_inventory_control.menu_selected, i]) {
-                instance_destroy();
-            } 
+            obj_inventory_control.items[obj_inventory_control.menu_selected, i].visible = false;
         }
-        with (obj_selected_spell) {
-            instance_destroy();
-        }
-        instance_destroy();
+        selected_spell.visible = false
     }
 }
 //handle the rotating animation
