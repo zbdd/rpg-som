@@ -89,6 +89,7 @@
   <scripts name="scripts">
     <script>scripts\create_text_window.gml</script>
     <script>scripts\window.gml</script>
+    <script>scripts\window_text.gml</script>
     <script>scripts\add_inventory.gml</script>
     <script>scripts\explode_string.gml</script>
   </scripts>
@@ -157,7 +158,7 @@
     <room>rooms\rm_default_grass</room>
   </rooms>
   <constants number="2">
-    <constant name="GM_build_date">41913.4514493287</constant>
+    <constant name="GM_build_date">41913.4582533796</constant>
     <constant name="GM_version">'1.0.0.0'</constant>
   </constants>
   <help>

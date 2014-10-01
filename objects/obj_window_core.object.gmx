@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>depth = -100000;
-message = "Undefined Message";
+message = -1;
 obj_game_state.game_state = "suspended_for_message";
 start = false;
 message_array = '';
@@ -36,6 +36,8 @@ speaker = "Default";
 numbers = 0;
 length = 60;
 height = 16;
+index = 0;
+hastext = false;
 </string>
           </argument>
         </arguments>
@@ -65,7 +67,7 @@ height = 16;
     y = lerp(start_y, target_y, progress);
 }
 
-if (tokenise_string) {
+if (tokenise_string &amp;&amp; hastext) {
     if (string_length(message) &gt; 80) {
         max_length = 80;
 
@@ -163,7 +165,9 @@ start = true;
             <string>draw_set_font(fa_default);
 draw_sprite_stretched_ext(spr_window_base,0,x + 4, y + 4, sprite_width + length, sprite_height + height, c_blue,0.6);
 
-draw_text_ext(x + 12,y + 10,message,16,sprite_width + length - 16);
+if (hastext) {
+    draw_text_ext(x + 12,y + 10,message,16,sprite_width + length - 16);
+}
 draw_set_colour(c_white);
 
 ///Draw Window
